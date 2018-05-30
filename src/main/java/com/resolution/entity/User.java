@@ -5,6 +5,7 @@ import com.resolution.infra.utils.RegexUtil;
 import com.sun.istack.internal.NotNull;
 import lombok.*;
 import net.sf.oval.constraint.*;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @ToString(callSuper = true)
-@EqualsAndHashCode
+@EqualsAndHashCode (callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 
