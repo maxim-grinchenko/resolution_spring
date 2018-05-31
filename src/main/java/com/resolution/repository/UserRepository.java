@@ -1,7 +1,7 @@
 package com.resolution.repository;
 
 
-import com.resolution.entity.User;
+import com.resolution.domain.entity.User;
 
 import java.util.List;
 

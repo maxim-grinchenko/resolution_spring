@@ -1,6 +1,6 @@
-package com.resolution.entity;
+package com.resolution.domain.entity;
 
-import com.resolution.entity.base.AbstractEntity;
+import com.resolution.domain.entity.base.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

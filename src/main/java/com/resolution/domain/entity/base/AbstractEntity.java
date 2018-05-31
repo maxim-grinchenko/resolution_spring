@@ -1,4 +1,4 @@
-package com.resolution.entity.base;
+package com.resolution.domain.entity.base;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

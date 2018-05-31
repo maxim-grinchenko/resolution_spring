@@ -1,4 +1,4 @@
-package com.resolution.dto.base;
+package com.resolution.domain.dto.base;
 
 import lombok.Getter;
 import lombok.Setter;
