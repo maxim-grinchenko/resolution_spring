@@ -4,6 +4,8 @@ import com.resolution.domain.dto.UserDTO;
 import com.resolution.domain.entity.User;
 import com.resolution.infra.transformer.UserMapper;
 import com.resolution.service.UserService;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +28,12 @@ public class UserController {
     private UserMapper mapper;
 
     @RequestMapping(value = "/")
+    public String home() {
+        return "index";
+    }
+
+    @Cacheable("user")
+    @RequestMapping(value = "/findAll")
     public ModelAndView list(ModelAndView model) throws IOException {
 
         List<UserDTO> userDTOS = service.findAllUsers()
@@ -39,6 +47,7 @@ public class UserController {
     }
 
     @GetMapping("/find/by/{id}")
+    @Cacheable("user")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView create(@PathVariable("id") long id) {
         ModelAndView model = new ModelAndView();
@@ -48,7 +57,7 @@ public class UserController {
                 .orElseGet(UserDTO::new);
 
         model.addObject("user", userDTO);
-        model.setViewName("userForm");
+        model.setViewName("findUser");
         return model;
     }
 
@@ -61,6 +70,7 @@ public class UserController {
         return model;
     }
 
+    @CachePut("user")
     @PostMapping("/save")
     public ModelAndView save(@ModelAttribute User user) {
         if (user.getId() == 0) {
@@ -88,5 +98,8 @@ public class UserController {
         return model;
     }
 
-
+    @GetMapping("greet-clear")
+    @CacheEvict(cacheNames = "greeting", allEntries = true)
+    public void clearCache() {
+    }
 }

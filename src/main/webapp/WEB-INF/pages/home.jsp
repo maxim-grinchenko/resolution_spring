@@ -18,16 +18,14 @@
 			<th>Last Name</th>
 			<th>Address</th>
 			<th>Phone</th>
-			<th>Login</th>
 
-			<c:forEach var="employee" items="${listUser}">
+			<c:forEach var="user" items="${listUser}">
 				<tr>
 
 					<td>${user.name}</td>
 					<td>${user.lastName}</td>
 					<td>${user.email}</td>
 					<td>${user.phone}</td>
-					<td>${user.login}</td>
 					<td><a href="editUser?id=${user.id}">Edit</a>
 						<a href="deleteUser?id=${user.id}">Delete</a></td>
 
