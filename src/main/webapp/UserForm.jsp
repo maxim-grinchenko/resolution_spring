@@ -11,6 +11,7 @@
 <body>
     <div align="center">
         <h1>New/Edit User</h1>
+        <%--@elvariable id="user" type=""--%>
         <form:form action="saveUser" method="post" modelAttribute="user">
         <table>
             <form:hidden path="id"/>
